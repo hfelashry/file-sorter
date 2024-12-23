@@ -37,6 +37,11 @@ if not os.path.exists(docFolder):
     os.mkdir(docFolder)
     print("Created Docs folder directory.")
 
+miscFolder = os.path.join(directoryInput, 'Extra')
+if not os.path.exists(miscFolder):
+    os.mkdir(miscFolder)
+    print('Created Extra folder directory.')
+
 for file in directoryFiles:
     if file.endswith('.pdf'):
         pdfSource = os.path.join(directoryInput, file)
@@ -69,4 +74,7 @@ for file in directoryFiles:
         exeFileMove = shutil.move(exeSource, exeDestination)
         print("Moved " + file + ' to ' + exeDestination)
     else:
-        print("No files were detected to sort!")
+        miscSource = os.path.join(directoryInput, file)
+        miscDestination = os.path.join(miscFolder, file)
+        miscFileMove = shutil.move(miscSource, miscDestination)
+        print("Moved " + file + ' to ' + miscDestination)
